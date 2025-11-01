@@ -1,0 +1,117 @@
+.watch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-dark);
+  transition: var(--transition);
+  overflow: hidden;
+
+  &__container {
+    @include flex-center(column, 1.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 3rem 4rem;
+    border-radius: var(--radius);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 0 25px rgba(88, 166, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    transition: var(--transition);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 0 35px rgba(88, 166, 255, 0.15);
+    }
+  }
+
+  &__timezone,
+  &__date,
+  &__time {
+    margin-bottom: 1rem;
+
+    &-text {
+      transition: var(--transition);
+    }
+  }
+
+  &__timezone-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  &__date-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    letter-spacing: 1px;
+    opacity: 0.9;
+  }
+
+  &__time-text {
+    font-family: "Fira Code", monospace;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 700;
+    color: var(--color-accent);
+    text-shadow: 0 0 8px rgba(88, 166, 255, 0.6), 0 0 15px rgba(88, 166, 255, 0.3);
+    letter-spacing: 2px;
+    animation: glowPulse 2s ease-in-out infinite alternate;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+
+    &__container {
+      background: linear-gradient(145deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.01));
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(88, 166, 255, 0.05);
+      border-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &__time-text {
+      text-shadow: 0 0 6px rgba(88, 166, 255, 0.4), 0 0 10px rgba(88, 166, 255, 0.2);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__container {
+      padding: 2rem;
+      gap: 1rem;
+    }
+
+    &__time-text {
+      font-size: clamp(1.8rem, 8vw, 3rem);
+    }
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 8px rgba(88, 166, 255, 0.6), 0 0 15px rgba(88, 166, 255, 0.3);
+    opacity: 0.9;
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(88, 166, 255, 0.8), 0 0 25px rgba(88, 166, 255, 0.5);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
