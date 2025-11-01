@@ -46,6 +46,36 @@ const Watch: React.FC = (): JSX.Element => {
     return (): void => clearInterval(interval);
   }, []);
 
+  let eventDay: string | null = null;
+
+  interface holidaysTypes {
+    month: number;
+    day: number;
+    name: string;
+  }
+
+  const holidays: holidaysTypes[] = [
+    { month: 1, day: 1, name: "New Year 🎉" },
+    { month: 2, day: 14, name: "Valentine's Day ❤️" },
+    { month: 3, day: 8, name: "International Women's Day 💐" },
+    { month: 4, day: 1, name: "April Fool's Day 🤡" },
+    { month: 5, day: 1, name: "Labor Day 🛠️" },
+    { month: 6, day: 1, name: "Children's Day 🎈" },
+    { month: 7, day: 4, name: "Independence Day 🇺🇸" },
+    { month: 10, day: 31, name: "Halloween 🎃" },
+    { month: 11, day: 1, name: "All Saints' Day 🕯️" },
+    { month: 12, day: 25, name: "Christmas 🎄" },
+  ];
+
+  for (const e of holidays) {
+    if (date.month === e.month && date.day === e.day) {
+      eventDay = e.name;
+      break;
+    }
+  }
+
+  if (!eventDay) eventDay = "No special day 🌞";
+
   return (
     <section className="watch">
       <main className="watch__container">
@@ -57,6 +87,9 @@ const Watch: React.FC = (): JSX.Element => {
             {date.year} : {date.month.toString().padStart(2, "0")} :{" "}
             {date.day.toString().padStart(2, "0")}
           </h1>
+        </div>
+        <div className="watch__event">
+          <h1 className="watch__event-text">{eventDay}</h1>
         </div>
         <div className="watch__time">
           <h1 className="watch__time-text">
