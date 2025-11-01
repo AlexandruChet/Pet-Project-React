@@ -1,12 +1,15 @@
 import React, { useState, type JSX } from "react";
+import Btn from "../ui/buttons/Btn";
 import "./About.scss";
 
 const About: React.FC = (): JSX.Element => {
   const [showProjects, setShowProjects] = useState<boolean>(false);
 
   const toggleProjects = (): void => {
-    setShowProjects(prev => !prev);
+    setShowProjects((prev) => !prev);
   };
+
+  const btnClass = "about__button";
 
   return (
     <section className="about">
@@ -19,15 +22,13 @@ const About: React.FC = (): JSX.Element => {
           functionalities to help me grow as a developer.
         </p>
 
-        <button className="about__button" onClick={toggleProjects}>
-          {showProjects ? "Hide Projects" : "Show Projects"}
-        </button>
+        <Btn text="Click me" onClick={toggleProjects} className={btnClass} />
 
         {showProjects && (
           <ul className="about__list">
             <li className="about__item">
-              <strong>Watch App:</strong> A real-time clock with timezone support
-              and holiday notifications.
+              <strong>Watch App:</strong> A real-time clock with timezone
+              support and holiday notifications.
             </li>
             <li className="about__item">
               <strong>Nutrition Tracker:</strong> Track meals, calories, and
