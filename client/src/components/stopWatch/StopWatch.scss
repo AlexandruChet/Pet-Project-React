@@ -1,0 +1,56 @@
+.stopwatch {
+  justify-content: center;
+  padding: 50px;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  font-family: "Fira Code", monospace;
+  color: #fff;
+  text-align: center;
+
+  &__container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  &__display {
+    margin-bottom: 2rem;
+    font: 500 2rem/1 "Fira Code", monospace;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__btn {
+    padding: 0.8rem 1.5rem;
+    font: 600 1rem/1 "Fira Code", monospace;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.3s;
+
+    &--start {
+      background: #28a745;
+      &:hover {
+        background: #34d058;
+      }
+    }
+    &--stop {
+      background: #dc3545;
+      &:hover {
+        background: #ff4757;
+      }
+    }
+    &--reset {
+      background: #007bff;
+      &:hover {
+        background: #339cff;
+      }
+    }
+  }
+}
