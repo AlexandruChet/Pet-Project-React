@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, type JSX } from "react";
 import Btn from "../ui/buttons/Btn";
 import "./StopWatch.scss";
+import Heading from "../ui/h1/title";
 
 const StopWatch: React.FC = (): JSX.Element => {
   const [time, setTime] = useState<number>(0);
@@ -41,11 +42,14 @@ const StopWatch: React.FC = (): JSX.Element => {
   return (
     <section className="stopwatch">
       <div className="stopwatch__container">
-        <h1 className="stopwatch__display">
-          {isRunning
-            ? `⏱ Time: ${seconds}.${milliseconds} seconds`
-            : `🛑 Stopwatch stopped at ${seconds}.${milliseconds} seconds.`}
-        </h1>
+        <Heading
+          className="stopwatch__display"
+          text={
+            isRunning
+              ? `⏱ Time: ${seconds}.${milliseconds} seconds`
+              : `🛑 Stopwatch stopped at ${seconds}.${milliseconds} seconds.`
+          }
+        />
 
         <div className="stopwatch__buttons">
           <Btn
